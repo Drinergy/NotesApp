@@ -62,11 +62,32 @@ function showMenu(elem) {
 }
 
 function deleteNote(noteId) {
-    let confirmDel = confirm("Are you sure you want to delete this note?");
-    if(!confirmDel) return;
-    notes.splice(noteId, 1);
-    localStorage.setItem("notes", JSON.stringify(notes));
-    showNotes();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        iconColor: '#9E7676',
+        background: '#FFF8EA',
+        color: '#594545',
+        confirmButtonColor: '#594545',
+        cancelButtonColor: '#781f19',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Deleted',
+            text: "Your Note has been Deleted!",
+            icon: 'success',
+            background: '#FFF8EA',
+            confirmButtonColor: '#594545',
+            confirmButtonText: 'Ok'
+          })
+          notes.splice(noteId, 1);
+          localStorage.setItem("notes", JSON.stringify(notes));
+          showNotes();
+        }
+      })
 }
 
 function updateNote(noteId, title, filterDesc) {
