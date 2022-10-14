@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #FFF8EA;
+}
+
+.wrapper{
+    margin: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 265px);
+    gap: 15px;
+}
+
+.wrapper li{
+    height: 250px;
+    list-style: none;
+    background: #594545;
+    border-radius: 5px;
+    padding: 15px 20px 20px;
+}
+
+.add-box, .icon, .bottom-content,
+.settings .menu li, .popup, header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-box{
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.add-box .icon{
+    height: 78px;
+    width: 78px;
+    font-size: 40px;
+    border-radius: 50%;
+    border: 2px dashed #FFF8EA;
+    color: #FFF8EA;
+    justify-content: center;
+}
+
+.add-box p{
+    color: #FFF8EA;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.wrapper .note{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.note .details{
+    max-height: 165px;
+    overflow-y: auto;
+}
+
+.note .details::-webkit-scrollbar,
+.popup textarea::-webkit-scrollbar{
+  width: 0;
+}
+
+.note .details:hover::-webkit-scrollbar,
+.popup textarea:hover::-webkit-scrollbar{
+  width: 5px;
+}
+
+.note .details:hover::-webkit-scrollbar-track,
+.popup textarea:hover::-webkit-scrollbar-track{
+  background: #FFF8EA;
+  border-radius: 25px;
+}
+
+.note .details:hover::-webkit-scrollbar-thumb,
+.popup textarea:hover::-webkit-scrollbar-thumb{
+  background: #9E7676;
+  border-radius: 25px;
+}
+
+.note p{
+    font-size: 22px;
+    font-weight: 500;
+    color: #FFF8EA;
+}
+
+.note span{
+    display: block;
+    margin-top: 5px;
+    color: #FFF8EA;
+    font-size: 16px;
+}
+
+.note .bottom-content{
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.bottom-content span{
+    font-size: 14px;
+    color: #FFF8EA;
+}
+
+.bottom-content .settings i{
+    font-size: 15px;
+    cursor: pointer;
+    color: #FFF8EA;
+}
+
+.settings{
+    position: relative;
+}
+
+.settings .menu{
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    border-radius: 4px;
+    right: -5px;
+    padding: 5px 0;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    background: #594545;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.2s ease;
+}
+
+.settings.active .menu{
+    transform: scale(1);
+}
+
+.settings .menu li{
+    color: #FFF8EA;
+    height: 25px;
+    border-radius: 0;
+    justify-content: flex-start;
+    background: #594545;
+    cursor: pointer;
+    padding: 17px 15px;
+    font-size: 16px;
+}
+
+.menu li:hover{
+    background: #815B5B;
+}
+
+.menu li i{
+    padding-right: 8px;
+}
+
+.popup-box{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.popup-box .popup{
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+}
+
+.popup-box, .popup{
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+
+.popup-box.active, .popup-box.active .popup{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup .content{
+    background: #FFF8EA;
+    color: #594545;
+    width: calc(100% - 15px);
+}
+
+.popup .content header{
+    padding: 15px 25px;
+    border-bottom: 1px solid #ccc;
+}
+
+.content header p{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.content header i{
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.content form{
+    margin: 15px 25px 35px;
+}
+
+.content form .row{
+    margin-bottom: 20px;
+}
+
+form{
+    z-index: 6;
+}
+form .row label{
+    display: block;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.content form :where(input, textarea){
+    width: 100%;
+    height: 50px;
+    outline: none;
+    font-size: 17px;
+    padding: 0 15px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    background: #FFF8EA;
+}
+
+form :where(input, textarea):focus{
+    box-shadow: 0 2px 4px rgba(0,0,0,0.11);
+  }
+
+ form .row textarea{
+    height: 150px;
+    resize: none;
+    padding: 8px 15px;
+}
+
+ form button{
+    width: 100%;
+    height: 50px;
+    background: #594545;
+    outline: none;
+    border: none;
+    color: #FFF8EA;
+    font-size: 17px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 660px){
+    .wrapper{
+      margin: 15px;
+      gap: 15px;
+      grid-template-columns: repeat(auto-fill, 100%);
+    }
+    .popup-box .popup{
+      max-width: calc(100% - 15px);
+    }
+    .bottom-content .settings i{
+      font-size: 17px;
+    }
+  }
